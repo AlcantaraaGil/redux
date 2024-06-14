@@ -2,21 +2,18 @@ import { createSlice } from '@reduxjs/toolkit'
 
 export const pokemonSlice = createSlice({
   name: 'pokemon',
-  initialState:{
-    page:0,
-    pokemons:[],
-    isLoading:false,
+  initialState: {
+    page: 0,
+    pokemons: [],
   },
   reducers: {
-    startLoadingPokemons: (state, /* action */) => {
-      state.isLoading = true;
+    setPage: (state, action) => {
+      state.page = action.payload;
     },
-    setPokemons: (state,action) => {
-        state.isLoading = false;
-        state.page = action.payload.page;
-        state.pokemons = action.payload.pokemons;
-    }
+    setPokemons: (state, action) => {
+      state.pokemons = action.payload;
+    },
   },
-})
+});
 
-export const { startLoadingPokemons,setPokemons } = pokemonSlice.actions
+export const { setPage, setPokemons } = pokemonSlice.actions;
